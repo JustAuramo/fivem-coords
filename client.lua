@@ -1,5 +1,5 @@
-RegisterNetEvent('AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu')
-AddEventHandler('AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu', function(data)
+RegisterNetEvent('fivem-coords:GetLocationOfPositionAndCopyNotUseMenu')
+AddEventHandler('fivem-coords:GetLocationOfPositionAndCopyNotUseMenu', function(data)
   local plyPos = GetEntityCoords(cache.ped)
   local plyHead = GetEntityHeading(cache.ped)
   local DoneText = ''
@@ -35,108 +35,112 @@ AddEventHandler('AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu', fu
 
   if DoneText ~= '' then
     lib.notify({
-      title = 'Copied',
-      description = DoneText,
+      title = 'Kopioitu',
+      description = 'Kordinaatti Kopioitu',
       position = 'top',
-      type = 'success'
-    })
+      style = {
+          backgroundColor = '#12131B',
+          color = '#C1C2C5',
+          ['.description'] = {
+            color = '#909296'
+          }
+      },
+      icon = 'fas fa-map-marker-alt',
+      iconColor = '#fff700'
+  })
     lib.setClipboard(DoneText)
     DoneText = ''
   end
 end)
 
-RegisterNetEvent('AndiyScripts_GetPos:GetLocationOfPositionAndCopyYeasUseMenu')
-AddEventHandler('AndiyScripts_GetPos:GetLocationOfPositionAndCopyYeasUseMenu', function(data)
+
+RegisterNetEvent('fivem-coords:GetLocationOfPositionAndCopyYeasUseMenu')
+AddEventHandler('fivem-coords:GetLocationOfPositionAndCopyYeasUseMenu', function(data)
   lib.showContext('command_menu_main')
 end)
 
 lib.registerContext({
   id = 'command_menu_main',
-  title = 'Command Menu',
+  title = 'Kordinaatti Valikko',
   options = {
     {
-      title = 'Copy vector3',
+      title = 'Kopioi vector3',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = 'v1'}
     },
     {
-      title = 'Copy vector4',
+      title = 'Kopioi vector4',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = 'v2'}
     },
     {
-      title = 'Copy {x=0,y=0,z=0}',
+      title = 'Kopioi {x=0,y=0,z=0}',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = 'b1'}
     },
     {
-      title = 'Copy {x=0,y=0,z=0,h=0}',
+      title = 'Kopio {x=0,y=0,z=0,h=0}',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = 'b2'}
     },
     {
-      title = 'Copy x=0,y=0,z=0',
+      title = 'Kopioi x=0,y=0,z=0',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = 't1'}
     },
     {
-      title = 'Copy x=0,y=0,z=0,h=0',
+      title = 'Kopioi x=0,y=0,z=0,h=0',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = 't2'}
     },
     {
-      title = 'Copy [x]=0,[y]=0,[z]=0',
+      title = 'Kopioi [x]=0,[y]=0,[z]=0',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = 's1'}
     },
     {
-      title = 'Copy [x]=0,[y]=0,[z]=0,[h]=0',
+      title = 'Kopioi [x]=0,[y]=0,[z]=0,[h]=0',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = 's2'}
     },
     {
-      title = 'Copy 0,0,0 (x,y,z)',
+      title = 'Kopioi 0,0,0 (x,y,z)',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = '1'}
     },
     {
-      title = 'Copy 0,0,0,0 (x,y,z,h)',
+      title = 'Kopioi 0,0,0,0 (x,y,z,h)',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = '2'}
     },
     {
-      title = 'Copy 0,0 (x,y)',
+      title = 'Kopioi 0,0 (x,y)',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = '3'}
     },
     {
-      title = 'Copy 0 (h)',
+      title = 'Kopioi 0 (h)',
 			arrow = false,
-			event = 'AndiyScripts_GetPos:GetLocationOfPositionAndCopyNotUseMenu',
+			event = 'fivem-coords:GetLocationOfPositionAndCopyNotUseMenu',
 			args = {type = '4'}
     },
     {
-      title = 'Show Coord',
+      title = 'Näytä Kordinaatit',
 			arrow = false,
-			event = 'ToggleCoords',
+			event = 'fivem-coords:coords',
 			args = {type = '5'}
-    },
-    {
-      title = 'Lukot',
-			arrow = false,
-			event = 'lukot',
-			args = {type = '6'}
     },
   },
 })
+

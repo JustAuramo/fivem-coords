@@ -1,24 +1,55 @@
-local function ToggleShowCoordinates()
-    local x = 0.4
-    local y = 0.025
-    showCoords = not showCoords
-    CreateThread(function()
-        while showCoords do
-            local coords = GetEntityCoords(PlayerPedId())
-            local heading = GetEntityHeading(PlayerPedId())
-            local c = {}
-            c.x = ESX.Math.Round(coords.x, 2)
-            c.y = ESX.Math.Round(coords.y, 2)
-            c.z = ESX.Math.Round(coords.z, 2)
-            heading = ESX.Math.Round(heading, 2)
-            Wait(0)
-            Draw2DText(string.format('~w~'.._U("info.ped_coords") .. '~b~ vector4(~w~%s~b~, ~w~%s~b~, ~w~%s~b~, ~w~%s~b~)', c.x, c.y, c.z, heading), 4, {66, 182, 245}, 0.4, x + 0.0, y + 0.0)
-        end
-    end)
+local coordsVisible = false
+
+function DrawGenericText(text)
+	SetTextColour(186, 186, 186, 255)
+	SetTextFont(7)
+	SetTextScale(0.378, 0.378)
+	SetTextWrap(0.0, 1.0)
+	SetTextCentre(false)
+	SetTextDropshadow(0, 0, 0, 0, 255)
+	SetTextEdge(1, 0, 0, 0, 205)
+	SetTextEntry("STRING")
+	AddTextComponentString(text)
+	DrawText(0.40, 0.00)
 end
 
+Citizen.CreateThread(function()
+    while true do
+		local sleepThread = 250
+		
+		if coordsVisible then
+			sleepThread = 5
 
+			local playerPed = PlayerPedId()
+			local playerX, playerY, playerZ = table.unpack(GetEntityCoords(playerPed))
+			local playerH = GetEntityHeading(playerPed)
 
-RegisterNetEvent('ToggleCoords', function()
-    ToggleShowCoordinates()
+			DrawGenericText(("~g~X~w~: %s ~g~Y~w~: %s ~g~Z~w~: %s ~g~H~w~: %s"):format(FormatCoord(playerX), FormatCoord(playerY), FormatCoord(playerZ), FormatCoord(playerH)))
+		end
+
+		Citizen.Wait(sleepThread)
+	end
 end)
+
+FormatCoord = function(coord)
+	if coord == nil then
+		return "unknown"
+	end
+
+	return tonumber(string.format("%.2f", coord))
+end
+
+ToggleCoords = function()
+	coordsVisible = not coordsVisible
+end
+
+RegisterNetEvent('fivem-coords:coords', function()
+	ToggleCoords()
+  end)
+
+--RegisterCommand("coords", function()
+--    ToggleCoords()
+--end)
+
+
+

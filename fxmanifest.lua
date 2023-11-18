@@ -1,6 +1,6 @@
 fx_version 'adamant'
 game 'gta5'
-author 'AndiyScripts'
+author 'FivemCoords'
 lua54 'yes'
 
 version '1.0.1'

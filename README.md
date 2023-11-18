@@ -1,4 +1,4 @@
-# AndiyScripts_GetPos
+# fivem-coords
 
 Get position copied to your clipboard either from a ox_lib menu trigger by a command or multiple commands. command name and permission can be set for each command.
 

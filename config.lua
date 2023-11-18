@@ -1,17 +1,17 @@
-AndiyScripts = {}
+FivemCoords = {}
 
-AndiyScripts.Use_Menu = true
+FivemCoords.Use_Menu = true
 
-AndiyScripts.Use_OX_Lib_V3 = true
+FivemCoords.Use_OX_Lib_V3 = true
 
-AndiyScripts.CommandMenu = {-- if Use_Menu = true then
-    ['commandmenu'] = {
+FivemCoords.CommandMenu = {-- if Use_Menu = true then
+    ['coords'] = {
         permission = 'admin',
-        help_string = 'Open Command Menu',
+        help_string = 'Avaa Coords Menu',
     },
 }
 
-AndiyScripts.Commands = {-- if Use_Menu = false then
+FivemCoords.Commands = {-- if Use_Menu = false then
     ['posv1'] = {
         permission = 'admin', -- Allowed group
         help_string = 'Copy vector3(0,0,0) Position',
